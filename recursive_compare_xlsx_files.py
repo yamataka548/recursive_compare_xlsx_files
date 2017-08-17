@@ -10,7 +10,7 @@ import sys
 import re
 from openpyxl import load_workbook
 
-def println(v):
+def print_flush(v):
     print(v)
     sys.stdout.flush()
 
@@ -45,7 +45,7 @@ def compare_xlsx_files(xlsx_file1, xlsx_file2):
         else:
             raise RuntimeError('ERROR: sheet_name %s not found at %s ' % (sheet_name, xlsx_file2))
 
-    println('DONE: %s, %s' % (xlsx_file1, xlsx_file2))
+    print_flush('DONE: %s, %s' % (xlsx_file1, xlsx_file2))
 
 
 def find_path(base_filename, target_dir2):
@@ -68,7 +68,7 @@ def find_and_compare(filepath, target_dir2):
             try:
                 compare_xlsx_files(file1, file2)
             except Exception as error:
-                print(error)
+                print_flush(error)
 
 def main():
     original_dir = sys.argv[1]
